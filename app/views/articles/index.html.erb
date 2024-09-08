@@ -8,7 +8,6 @@
 <div class="articles-list">
   <% if @articles.any? %>
     <% @articles.each do |article| %>
-      <!-- Appliquer h-100 ici pour prendre toute la hauteur disponible -->
       <div class="card article-card mb-3 h-100 d-flex flex-column">
         <div class="card-body d-flex flex-column">
           <!-- Affichage de la catégorie et de la pertinence -->
@@ -18,11 +17,9 @@
           </div>
           <!-- Titre de l'article -->
           <h5 class="card-title"><%= article.title %></h5>
-          <!-- Utilisation de flex-grow-1 pour permettre au texte de prendre l'espace disponible -->
           <p class="card-text flex-grow-1"><%= article.description %></p>
           <!-- Lien pour voir l'article -->
           <a href="<%= article.url %>" target="_blank" class="btn btn-link">Voir l'article</a>
-          <!-- Boutons placés en bas avec mt-auto -->
           <div class="d-flex p-2 mt-auto">
             <%= button_to 'Ajouter', add_to_newsletter_article_path(article), method: :patch, class: 'btn btn-success me-2' %>
             <%= button_to 'Supprimer', article_path(article), method: :delete, class: 'btn btn-danger' %>
