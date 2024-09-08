@@ -1,0 +1,51 @@
+<!-- app/views/subscribers/index.html.erb -->
+<h1>Gestion de la Newsletter</h1>
+
+<div class="email-list">
+  <h2>Destinataires</h2>
+  <% if @subscribers.any? %>
+    <ul>
+      <% @subscribers.each do |subscriber| %>
+        <li>
+          <%= subscriber.email %>
+          <%= button_to '×', subscriber_path(subscriber), method: :delete, class: 'btn btn-danger btn-sm' %>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>Aucun abonné pour l'instant.</p>
+  <% end %>
+
+  <%= form_with model: Subscriber.new, local: true do |form| %>
+    <div class="form-group">
+      <%= form.label :email %>
+      <%= form.email_field :email, class: 'form-control' %>
+    </div>
+    <%= form.submit 'Ajouter', class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<div class="articles-newsletter">
+  <h2>Articles sélectionnés</h2>
+  <div class="articles-list">
+    <% @articles = Article.where(added_to_newsletter: true) %>
+    <% if @articles.any? %>
+      <% @articles.each do |article| %>
+        <div class="card article-card">
+          <div class="card-body">
+            <div class="d-flex justify-content-between">
+              <p class="card-text">Catégorie : <%= article.category %></h5>
+              <p class="card-text">Pertinence : <%= article.pertinence %></h5>
+            </div>
+            <h5 class="card-title"><%= article.title %></h5>
+            <p class="card-text"><%= truncate(article.description, length: 500) %></p>
+            <a href="<%= article.url %>" target="_blank" class="btn btn-link">Voir l'article</a>
+            <%= button_to 'Retirer', remove_from_newsletter_article_path(article), method: :patch, class: 'btn btn-warning' %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>Aucun article sélectionné pour la newsletter.</p>
+    <% end %>
+  </div>
+</div>

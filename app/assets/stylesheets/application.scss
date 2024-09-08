@@ -10,3 +10,42 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+/* app/assets/stylesheets/articles.scss */
+
+.articles-list {
+  margin-top: 20px;
+}
+
+.email-list {
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px 0;
+}
+
+body {
+  padding-top: 56px;
+}
+
+.navbar {
+  margin-bottom: 20px;
+}
+
+.btn[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.article-card {
+  margin-bottom: 15px;
+}

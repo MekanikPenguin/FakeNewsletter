@@ -1,9 +1,13 @@
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+# db/seeds.rb
+Article.destroy_all
+Subscriber.destroy_all
+
+Article.create([
+  { title: 'Article 1', description: 'Description of article 1 Description of article 1 Description of article 1 Description of article 1 Description of article 1 Description of article 1 Description of article 1 Description of article 1 Description of article 1 v Description of article 1 Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1Description of article 1', url: 'http://example.com/article1' },
+  { title: 'Article 2', description: 'Description of article 2', url: 'http://example.com/article2' },
+  { title: 'Article 3', description: 'Description of article 3', url: 'http://example.com/article3' },
+  { title: 'Article 4', description: 'Description of article 4', url: 'http://example.com/article4' },
+  { title: 'Article 5', description: 'Description of article 5', url: 'http://example.com/article5' }
+])
+
+Subscriber.create(email: 'test@example.com')

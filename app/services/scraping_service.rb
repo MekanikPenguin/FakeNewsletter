@@ -1,0 +1,3 @@
+class ScrapingService < ApplicationService
+  
+end
